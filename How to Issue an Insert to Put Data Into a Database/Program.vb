@@ -13,6 +13,10 @@ Module Program
         Dim connectionString As String = $"Data Source={DatabaseFileName};Version=3;"
 
         ' Set up parameterized SQL query
+        ' -----------------------------------------------------------------------------
+        ' Security Note: Never concatenate (or join) a string into a SQL statement.
+        ' Always use parameterized queries to prevent SQL Injection attacks.
+        ' -----------------------------------------------------------------------------
         Dim query As String = "INSERT INTO Users (Name, Country) VALUES (@Name, @Country)"
 
         Using conn As New SQLiteConnection(connectionString)
